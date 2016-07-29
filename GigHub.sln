@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GigHub.Core", "GigHub.Core\GigHub.Core.csproj", "{666D3FB3-D72F-41E8-BB72-378D7BFCB91A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GigHub.DataLayer", "GigHub.DataLayer\GigHub.DataLayer.csproj", "{E5F6AAE9-6B7D-49FD-8D9B-B5790EF73AD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GigHub.Web", "GigHub.Web\GigHub.Web.csproj", "{1D914196-5A76-4FA0-87A2-1045D448B9DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{666D3FB3-D72F-41E8-BB72-378D7BFCB91A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{666D3FB3-D72F-41E8-BB72-378D7BFCB91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{666D3FB3-D72F-41E8-BB72-378D7BFCB91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{666D3FB3-D72F-41E8-BB72-378D7BFCB91A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5F6AAE9-6B7D-49FD-8D9B-B5790EF73AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F6AAE9-6B7D-49FD-8D9B-B5790EF73AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F6AAE9-6B7D-49FD-8D9B-B5790EF73AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F6AAE9-6B7D-49FD-8D9B-B5790EF73AD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D914196-5A76-4FA0-87A2-1045D448B9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D914196-5A76-4FA0-87A2-1045D448B9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D914196-5A76-4FA0-87A2-1045D448B9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D914196-5A76-4FA0-87A2-1045D448B9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
