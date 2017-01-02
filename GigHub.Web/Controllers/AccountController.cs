@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GigHub.Web.Models;
+using GigHub.Core;
+
 
 namespace GigHub.Web.Controllers
 {
