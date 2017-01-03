@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="GenerConfiguration.cs" />
+    <Compile Include="GigConfiguration.cs" />
     <Compile Include="Migrations\201701021743160_InitialProject.cs" />
     <Compile Include="Migrations\201701021743160_InitialProject.Designer.cs">
       <DependentUpon>201701021743160_InitialProject.cs</DependentUpon>
@@ -65,6 +67,10 @@
     <Compile Include="Migrations\201701031515564_AddGigsAndGenre.cs" />
     <Compile Include="Migrations\201701031515564_AddGigsAndGenre.Designer.cs">
       <DependentUpon>201701031515564_AddGigsAndGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701032204199_AddFuentAPI_ForGigAndGener.cs" />
+    <Compile Include="Migrations\201701032204199_AddFuentAPI_ForGigAndGener.Designer.cs">
+      <DependentUpon>201701032204199_AddFuentAPI_ForGigAndGener.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701031515564_AddGigsAndGenre.resx">
       <DependentUpon>201701031515564_AddGigsAndGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701032204199_AddFuentAPI_ForGigAndGener.resx">
+      <DependentUpon>201701032204199_AddFuentAPI_ForGigAndGener.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
