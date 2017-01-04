@@ -14,7 +14,7 @@ namespace GigHub.DataLayer
        {
            Property(g => g.Venue).IsRequired().HasMaxLength(255);
            HasRequired(g => g.Artist).WithRequiredDependent().WillCascadeOnDelete(false);
-           HasRequired(g => g.Genre).WithRequiredDependent().WillCascadeOnDelete(false);
+           HasRequired(g => g.Genre).WithMany().WillCascadeOnDelete(false);
             Property(g => g.DateTime).IsRequired();
         //   Property(g => g.Artist).IsRequired();
 

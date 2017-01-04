@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201701032204199_AddFuentAPI_ForGigAndGener.Designer.cs">
       <DependentUpon>201701032204199_AddFuentAPI_ForGigAndGener.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701040011304_SomeCorrectGigFlApi.cs" />
+    <Compile Include="Migrations\201701040011304_SomeCorrectGigFlApi.Designer.cs">
+      <DependentUpon>201701040011304_SomeCorrectGigFlApi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701032204199_AddFuentAPI_ForGigAndGener.resx">
       <DependentUpon>201701032204199_AddFuentAPI_ForGigAndGener.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701040011304_SomeCorrectGigFlApi.resx">
+      <DependentUpon>201701040011304_SomeCorrectGigFlApi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,3 +1,5 @@
+using GigHub.Core;
+
 namespace GigHub.DataLayer.Migrations
 {
     using System;
@@ -14,6 +16,11 @@ namespace GigHub.DataLayer.Migrations
 
         protected override void Seed(GigHub.DataLayer.ApplicationDbContext context)
         {
+            context.Genres.AddOrUpdate(g => g.Name, new Genre { Id=1, Name = "Jazz" });
+            context.Genres.AddOrUpdate(g => g.Name, new Genre { Id=2, Name = "Blues" });
+            context.Genres.AddOrUpdate(g => g.Name, new Genre { Id=3, Name = "Rock" });
+            context.Genres.AddOrUpdate(g => g.Name, new Genre { Id=4, Name = "Country" });
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
