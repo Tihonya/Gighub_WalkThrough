@@ -21,6 +21,15 @@ namespace GigHub.DataLayer.Migrations
             context.Genres.AddOrUpdate(g => g.Name, new Genre { Id=3, Name = "Rock" });
             context.Genres.AddOrUpdate(g => g.Name, new Genre { Id=4, Name = "Country" });
 
+
+            //context.Gigs.AddOrUpdate(new Gig
+            //{
+            //    Genre = context.Genres.First(),
+            //    DateTime = DateTime.MaxValue,
+            //    Artist = context.Users.First(),
+            //    Venue = "Venue 1"
+            //});
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

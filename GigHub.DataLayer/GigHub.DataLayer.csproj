@@ -76,6 +76,14 @@
     <Compile Include="Migrations\201701040011304_SomeCorrectGigFlApi.Designer.cs">
       <DependentUpon>201701040011304_SomeCorrectGigFlApi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701051357269_Experement.cs" />
+    <Compile Include="Migrations\201701051357269_Experement.Designer.cs">
+      <DependentUpon>201701051357269_Experement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701051744153_AddForeignKeyPropertiesToGig.cs" />
+    <Compile Include="Migrations\201701051744153_AddForeignKeyPropertiesToGig.Designer.cs">
+      <DependentUpon>201701051744153_AddForeignKeyPropertiesToGig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -101,6 +109,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701040011304_SomeCorrectGigFlApi.resx">
       <DependentUpon>201701040011304_SomeCorrectGigFlApi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701051357269_Experement.resx">
+      <DependentUpon>201701051357269_Experement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701051744153_AddForeignKeyPropertiesToGig.resx">
+      <DependentUpon>201701051744153_AddForeignKeyPropertiesToGig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
