@@ -23,6 +23,10 @@ textarea {
     max-width: 280px;
 }
 
+span.field-validation-error {
+    color: #d31313;
+}
+
 /*
     Bootstrap Overrides
 */
@@ -109,6 +113,10 @@ label {
 }
 .form-control {
     font-family: "Gloria Hallelujah", Helvetica, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 15px;
     color: #3e780a; 
+}
+.alert {
+       font-family: "Helvetica", Arial, sans-serif;
+       font-size: 15px;
 }
