@@ -27,6 +27,7 @@ namespace GigHub.Web.Controllers
         }
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(GigFormViewModel viewModel)
 
         {
