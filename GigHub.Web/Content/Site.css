@@ -22,3 +22,93 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*
+    Bootstrap Overrides
+*/
+.navbar-inverse {
+    background-color: #ff4342;
+    border-color: #ff4342;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: rgba(205, 40, 39, 0.55);
+}
+.navbar-brand {
+    /*float: left;
+    padding: 15px 15px;*/
+    font-size: 28px;
+    /*line-height: 20px;*/
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+.dropdown-menu {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Lemonada", Helvetica, Arial, sans-serif;
+    /*font-weight: 500;
+    line-height: 1.1;*/
+}
+
+h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 600;
+}
+
+.lead {
+    font-size: 28px;
+}
+
+
+body {
+    font-family: "Rancho", Helvetica, Arial, sans-serif;
+    font-size: 19px;
+  /*  line-height: 1.428571429;
+    color: #333333;
+    background-color: #ffffff;*/
+}
+.btn {
+    /*display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;*/
+    font-size: 17px;
+    /*font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;*/
+}
+.btn-lg {
+    /*padding: 10px 16px;*/
+    font-size: 22px;
+    /*line-height: 1.33;
+    border-radius: 6px;*/
+}
+label {
+    font-weight: normal;
+}
+.form-control {
+    font-family: "Gloria Hallelujah", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    color: #3e780a; 
+}
