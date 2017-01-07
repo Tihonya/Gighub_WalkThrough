@@ -18,6 +18,7 @@ namespace GigHub.DataLayer
         {
             modelBuilder.Configurations.Add(new GigConfiguration());
             modelBuilder.Configurations.Add(new GenerConfiguration());
+            modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
