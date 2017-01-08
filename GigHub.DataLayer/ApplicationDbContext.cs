@@ -14,11 +14,15 @@ namespace GigHub.DataLayer
         public DbSet<Gig> Gigs { get; set; }
         public DbSet<Genre> Genres { get; set; }
 
+        public DbSet<Attendance> Attendances { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new AttendanceConfiguration());
             modelBuilder.Configurations.Add(new GigConfiguration());
             modelBuilder.Configurations.Add(new GenerConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
+            
 
             base.OnModelCreating(modelBuilder);
         }

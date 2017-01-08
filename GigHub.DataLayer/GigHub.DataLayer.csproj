@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="ApplicationUserConfiguration.cs" />
+    <Compile Include="AttendanceConfiguration.cs" />
     <Compile Include="GenerConfiguration.cs" />
     <Compile Include="GigConfiguration.cs" />
     <Compile Include="Migrations\201701021743160_InitialProject.cs" />
@@ -88,6 +89,10 @@
     <Compile Include="Migrations\201701062227269_AddNameToApplicationUser.cs" />
     <Compile Include="Migrations\201701062227269_AddNameToApplicationUser.Designer.cs">
       <DependentUpon>201701062227269_AddNameToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701072300067_AddAttendance.cs" />
+    <Compile Include="Migrations\201701072300067_AddAttendance.Designer.cs">
+      <DependentUpon>201701072300067_AddAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701062227269_AddNameToApplicationUser.resx">
       <DependentUpon>201701062227269_AddNameToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701072300067_AddAttendance.resx">
+      <DependentUpon>201701072300067_AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
