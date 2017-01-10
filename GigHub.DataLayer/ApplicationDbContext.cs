@@ -15,6 +15,7 @@ namespace GigHub.DataLayer
         public DbSet<Genre> Genres { get; set; }
 
         public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<Following> Followings { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -22,6 +23,8 @@ namespace GigHub.DataLayer
             modelBuilder.Configurations.Add(new GigConfiguration());
             modelBuilder.Configurations.Add(new GenerConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
+          
+
             
 
             base.OnModelCreating(modelBuilder);

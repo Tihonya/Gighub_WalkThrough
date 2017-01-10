@@ -8,6 +8,14 @@ namespace GigHub.DataLayer
         public ApplicationUserConfiguration()
         {
             Property(u => u.Name).IsRequired().HasMaxLength(100);
+
+            HasMany(u=>u.Followers)
+                .WithRequired(f=>f.Follower)
+                .WillCascadeOnDelete(false);
+
+            HasMany(u=>u.Followees)
+                .WithRequired(f=>f.Followee)
+                .WillCascadeOnDelete(false);
         }
     }
 }

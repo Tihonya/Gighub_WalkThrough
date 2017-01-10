@@ -108,6 +108,12 @@ body {
     /*line-height: 1.33;
     border-radius: 6px;*/
 }
+
+.btn-sm.pull-right  {
+    font-size: 15px;
+    padding: 2px 5px;
+}
+
 label {
     font-weight: normal;
 }
@@ -148,11 +154,15 @@ label {
     padding: 2px 12px;
 }
 .gigs > li .details {
+
+    
     position: absolute;
     top: 0;
+    
     left: 70px;
 }
 .gigs > li .details .artist {
+    
     font-weight: normal; 
     display: block;
 }

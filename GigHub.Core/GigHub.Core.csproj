@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Attendance.cs" />
+    <Compile Include="Following.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Gig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

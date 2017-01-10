@@ -94,6 +94,10 @@
     <Compile Include="Migrations\201701072300067_AddAttendance.Designer.cs">
       <DependentUpon>201701072300067_AddAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701100000592_AddFollowers.cs" />
+    <Compile Include="Migrations\201701100000592_AddFollowers.Designer.cs">
+      <DependentUpon>201701100000592_AddFollowers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -131,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701072300067_AddAttendance.resx">
       <DependentUpon>201701072300067_AddAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701100000592_AddFollowers.resx">
+      <DependentUpon>201701100000592_AddFollowers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
