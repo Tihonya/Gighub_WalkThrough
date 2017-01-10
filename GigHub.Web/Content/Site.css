@@ -27,6 +27,15 @@ span.field-validation-error {
     color: #d31313;
 }
 
+.voffset { margin-top: 2px;}
+.voffset1 { margin-top: 5px;}
+.voffset2 { margin-top: 10px;}
+.voffset3 { margin-top: 20px;}
+.voffset4 { margin-top: 40px;}
+.voffset5 { margin-top: 70px;}
+
+
+
 /*
     Bootstrap Overrides
 */
