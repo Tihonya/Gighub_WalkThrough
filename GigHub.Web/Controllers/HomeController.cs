@@ -26,7 +26,7 @@ namespace GigHub.Web.Controllers
                 .ToList();
 
 
-            var viewModel = new HomeViewModel
+            var viewModel = new GigsViewModel
             {
                 UpcomingGigs = upcomingGigs,
                 ShowActions = User.Identity.IsAuthenticated
