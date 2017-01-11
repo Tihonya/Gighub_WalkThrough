@@ -127,9 +127,11 @@ label {
     font-weight: normal;
 }
 .form-control {
+   
     font-family: "Gloria Hallelujah", Helvetica, Arial, sans-serif;
     font-size: 15px;
-    color: #3e780a; 
+    color: #3e780a;
+    height: 42px;
 }
 .alert {
        font-family: "Helvetica", Arial, sans-serif;
@@ -178,4 +180,12 @@ label {
 .gigs > li .details .genre {
     font-size: 17px;
     font-weight: normal; 
+}
+
+.gigs > li .actions {
+    font-size: 15px;
+    display: none;
+}
+.gigs > li .details:hover .actions {
+    display: block;
 }
