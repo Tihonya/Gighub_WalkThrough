@@ -1,11 +1,11 @@
-﻿using GigHub.Core;
+using GigHub.Core;
 using GigHub.DataLayer;
 using GigHub.Web.Dtos;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Http;
 
-namespace GigHub.Web.Controllers
+namespace GigHub.Web.Controllers.Api
 {
     [Authorize]
     public class FollowingsController : ApiController
@@ -17,6 +17,7 @@ namespace GigHub.Web.Controllers
             _context =new ApplicationDbContext();
         }
 
+        [HttpPost]
         public IHttpActionResult Follow(FollowingDto dto)
         {
             var userId = User.Identity.GetUserId();

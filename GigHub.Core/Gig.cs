@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Spatial;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GigHub.Core
 {
     public class Gig
     {
         public int Id { get; set; }
+
+        public bool IsCanceled { get; set; }    
         public ApplicationUser Artist { get; set; }
 
         public string ArtistId { get; set; }
