@@ -1,5 +1,4 @@
-﻿using GigHub.Core;
-using GigHub.DataLayer;
+﻿using GigHub.DataLayer;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using System.Linq;
@@ -30,14 +29,8 @@ namespace GigHub.Web.Controllers.Api
             {
                 return NotFound();
             }
-            gig.IsCanceled = true;
 
-            var notification = new Notification(gig, NotificationType.GigCanceled);
-
-            foreach (var attendee in gig.Attendances.Select(a=>a.Attendee))
-            {
-                attendee.Notify(notification);
-            }
+            gig.Cancel();
 
             _context.SaveChanges();
 
