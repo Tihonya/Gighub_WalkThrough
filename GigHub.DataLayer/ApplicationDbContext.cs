@@ -13,9 +13,13 @@ namespace GigHub.DataLayer
 
         public DbSet<Gig> Gigs { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Following> Followings { get; set; }
+
+        public DbSet<UserNotification> UserNotifications { get; set; } 
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -23,6 +27,8 @@ namespace GigHub.DataLayer
             modelBuilder.Configurations.Add(new GigConfiguration());
             modelBuilder.Configurations.Add(new GenerConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
+            modelBuilder.Configurations.Add(new NotificationConfiguration());
+            modelBuilder.Configurations.Add(new UserNotificationConfiguration());
           
 
             
