@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace GigHub.Core
 {
@@ -14,5 +16,12 @@ namespace GigHub.Core
         public string Venue { get; set; }
         public Genre Genre { get; set; }
         public byte GenreId { get; set; }
+        public ICollection<Attendance> Attendances { get; private set; }
+
+        public Gig()
+        {
+            Attendances = new Collection<Attendance>();
+        }
+
     }
 }
