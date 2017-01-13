@@ -1,7 +1,9 @@
-﻿using GigHub.DataLayer;
+﻿using System;
+using GigHub.DataLayer;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Http;
+using GigHub.Core;
 
 namespace GigHub.Web.Controllers.Api
 {
@@ -27,6 +29,27 @@ namespace GigHub.Web.Controllers.Api
                 return NotFound();
             }
             gig.IsCanceled = true;
+
+            var notification = new Notification
+            {
+                DateTime = DateTime.Now,
+                Gig = gig,
+                Type = NotificationType.GigCanceled
+            };
+            var attendees = _context.Attendances
+                .Where(a => a.GigId == gig.Id)
+                .Select(a => a.Attendee)
+                .ToList();
+            foreach (var attendee in attendees)
+            {
+                var userNotification = new UserNotification
+                {
+                    User = attendee,
+                    Notification = notification
+                };
+
+                _context.UserNotifications.Add(userNotification);
+            }
 
             _context.SaveChanges();
 
