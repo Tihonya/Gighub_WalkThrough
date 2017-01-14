@@ -1,7 +1,7 @@
-﻿using GigHub.Core;
-using System;
+﻿using System;
+using GigHub.Core;
 
-namespace GigHub.Web.Controllers.Api
+namespace GigHub.Web.Dtos
 {
     public class NotificationDto
     {
