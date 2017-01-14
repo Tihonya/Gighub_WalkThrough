@@ -1,4 +1,6 @@
-﻿using GigHub.DataLayer;
+﻿using AutoMapper;
+using GigHub.Core;
+using GigHub.DataLayer;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +12,7 @@ namespace GigHub.Web.Controllers.Api
     [Authorize]
     public class NotificationsController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public NotificationsController()
         {
@@ -24,27 +26,16 @@ namespace GigHub.Web.Controllers.Api
                 .Select(un=>un.Notification)
                 .Include(n=>n.Gig.Artist)
                 .ToList();
+            
+           Mapper.Initialize(cfg =>
+           {
+               cfg.CreateMap<ApplicationUser, UserDto>();
+               cfg.CreateMap<Genre, GenreDto>();
+               cfg.CreateMap<Gig, GigDto>();
+               cfg.CreateMap<Notification, NotificationDto>();
+           });
 
-            return notifications.Select(n => new NotificationDto
-            {
-                DateTime = n.DateTime,
-                Gig = new GigDto
-                {
-                    Artist = new UserDto
-                    {
-                        Id = n.Gig.Artist.Id,
-                        Name = n.Gig.Artist.Name
-                    },
-                    DateTime = n.Gig.DateTime,
-                    Venue = n.Gig.Venue,
-                    Id = n.Gig.Id,
-                    IsCanceled = n.Gig.IsCanceled
-                },
-                OriginalDateTime = n.OriginalDateTime,
-                OriginalVenue = n.OriginalVenue,
-                Type = n.Type
-
-            });
+           return notifications.Select(Mapper.Map<Notification, NotificationDto>);
         }
     }
 }
