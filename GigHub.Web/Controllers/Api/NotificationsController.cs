@@ -13,7 +13,7 @@ namespace GigHub.Web.Controllers.Api
     public class NotificationsController : ApiController
     {
         private readonly ApplicationDbContext _context;
-
+        
         public NotificationsController()
         {
             _context=new ApplicationDbContext();
@@ -26,14 +26,7 @@ namespace GigHub.Web.Controllers.Api
                 .Select(un=>un.Notification)
                 .Include(n=>n.Gig.Artist)
                 .ToList();
-            
-           Mapper.Initialize(cfg =>
-           {
-               cfg.CreateMap<ApplicationUser, UserDto>();
-               cfg.CreateMap<Genre, GenreDto>();
-               cfg.CreateMap<Gig, GigDto>();
-               cfg.CreateMap<Notification, NotificationDto>();
-           });
+
 
            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
         }
