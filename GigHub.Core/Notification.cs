@@ -30,5 +30,19 @@ namespace GigHub.Core
             DateTime=DateTime.Now;
         }
 
+        public Notification(Gig gig, NotificationType type, string originalVenue, DateTime originalDateTime)
+        {
+            if (gig==null)
+            {
+                throw new ArgumentNullException("gig");
+            }
+            Gig = gig;
+            Type = type;
+            DateTime=DateTime.Now;
+            OriginalVenue = originalVenue;
+            OriginalDateTime = originalDateTime;
+
+        }
+
     }
 }

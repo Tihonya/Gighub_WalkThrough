@@ -15,7 +15,7 @@ namespace GigHub.Web.ViewModels
         [Required]
         public string Venue { get; set; }
         [Required]
-        [FutureDate]
+      //don't work maybe culture settings???  [FutureDate]
         public string Date { get; set; }
 
         [Required]

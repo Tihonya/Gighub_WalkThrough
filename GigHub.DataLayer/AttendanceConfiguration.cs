@@ -1,5 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using GigHub.Core;
+﻿using GigHub.Core;
+using System.Data.Entity.ModelConfiguration;
 
 namespace GigHub.DataLayer
 {
@@ -7,7 +7,7 @@ namespace GigHub.DataLayer
     {
         public AttendanceConfiguration()
         {
-            HasRequired(a=>a.Gig).WithMany().WillCascadeOnDelete(false);
+            HasRequired(a=>a.Gig).WithMany(g=>g.Attendances).WillCascadeOnDelete(false);
         }
     }
 }
