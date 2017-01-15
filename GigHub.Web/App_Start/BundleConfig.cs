@@ -22,6 +22,7 @@ namespace GigHub.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/underscore-min.js",
+                      "~/Scripts/moment-with-locales.js",
                       "~/Scripts/bootbox.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

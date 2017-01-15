@@ -202,3 +202,26 @@ label {
 .gigs > li .details:hover .actions {
     display: block;
 }
+.popover-notifications .popover-content {
+    padding: 0;
+}
+
+.popover-notifications ul.notifications {
+    list-style: none;
+    padding-left: 0;
+
+}
+
+.popover-notifications ul.notifications > li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.popover-notifications ul.notifications > li:last-child {
+     border-bottom: none;
+ }
+.popover-notifications ul.notifications .highlight {
+    font-weight: bold;
+    
+}
