@@ -40,15 +40,30 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 <script>
-    $(document).ready(function() {
+    
+    $(document).ready(function () {
+        //  debugger;
         $.getJSON("/api/notifications",
             function(notifications) {
-                $("js-notifications-count")
+                $(".js-notifications-count")
                     .text(notifications.length)
-                    .removeClass("hide");
+                    .removeClass("hide")
+                    .addClass("animated bounceInDown");
             });
 
+        $(".notifications").popover({
+            htmp: true,
+            title: "Notifications",
+            content: function () {
+                //This field-function must return a string
 
+                var compiled = _.template("Hello <%= name %>");
+                var html = compiled({ name: "Tihonya" });
+                return html;
+
+            },
+            placement: "bottom"
+        });
     });
 
 </script>
