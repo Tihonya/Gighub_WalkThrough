@@ -3,6 +3,7 @@ using GigHub.Core;
 using GigHub.DataLayer;
 using GigHub.Web.Dtos;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -53,8 +54,23 @@ namespace GigHub.Web.Controllers.Api
 
             return Ok();
         }
+        /// <summary>
+        /// not in use
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<NotificationDto> GetMostRecentNotifications()
+        {
+            var userId = User.Identity.GetUserId();
+            var notifications = _context.UserNotifications
+                .Where(un => un.UserId == userId)
+                .Select(un => un.Notification)
+                .Where(n=>n.DateTime>= DateTime.Now - new TimeSpan(5,0,0,0))
+                .Include(n => n.Gig.Artist)
+                .ToList();
 
 
+            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
+        }
 
 
 

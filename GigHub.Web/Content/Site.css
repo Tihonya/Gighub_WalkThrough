@@ -1,4 +1,7 @@
-﻿body {
+﻿#searchGigs {
+  width: 300px;
+}
+body {
   padding-top: 90px;
   padding-bottom: 20px;
 }
@@ -156,6 +159,11 @@ label {
   font-size: 15px;
   color: #3e780a;
   height: 42px;
+  transition: none;
+  -webkit-transition: none;
+}
+.form-control:focus {
+  box-shadow: none;
 }
 .alert {
   font-family: "Helvetica", Arial, sans-serif;

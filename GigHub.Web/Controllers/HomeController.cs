@@ -1,5 +1,6 @@
 ﻿using GigHub.DataLayer;
 using GigHub.Web.ViewModels;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -17,25 +18,40 @@ namespace GigHub.Web.Controllers
             _context = new ApplicationDbContext();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string query = null )
         {
             var upcomingGigs = _context.Gigs
                 .Include(g => g.Artist)
                 .Include(g=>g.Genre)
                 .Where(g => g.DateTime > DateTime.Now && !g.IsCanceled)
                 .ToList();
+            if ( !query.IsNullOrWhiteSpace())
+            {
+
+                var lquery = query.ToLower();
+
+                upcomingGigs = upcomingGigs
+                    .Where(g =>
+                        g.Artist.Name.ToLower().Contains(lquery)||
+                        g.Genre.Name.ToLower().Contains(lquery)||
+                        g.Venue.ToLower().Contains(lquery))
+                        .ToList();
+            }
 
 
             var viewModel = new GigsViewModel
             {
                 UpcomingGigs = upcomingGigs,
                 ShowActions = User.Identity.IsAuthenticated,
-                Heading = "Upcomming Gigs"
+                Heading = "Upcomming Gigs",
+                SearchTerm = query
                
             };
 
             return View("Gigs", viewModel);
         }
+
+
 
         public ActionResult About()
         {
