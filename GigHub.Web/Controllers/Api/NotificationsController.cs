@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using GigHub.Core;
 using GigHub.DataLayer;
+using GigHub.Web.Dtos;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
-using GigHub.Web.Dtos;
 
 namespace GigHub.Web.Controllers.Api
 {
@@ -31,5 +31,32 @@ namespace GigHub.Web.Controllers.Api
 
            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
         }
+
+
+        /// <summary>
+        /// This method has a BAD logic. 
+        /// What if between GetNewNotifications() method and MarkAsRead() user get some new notifications?
+        /// In that case user will never  see this notifications. 
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult MarkAsRead()
+        {
+            var userId = User.Identity.GetUserId();
+            var notifications = _context.UserNotifications
+                .Where(un => un.UserId == userId && !un.IsRead)
+                .ToList();
+
+            notifications.ForEach(n=> n.Read());
+
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+
+
+
+
     }
 }

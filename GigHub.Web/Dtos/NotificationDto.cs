@@ -1,11 +1,12 @@
-﻿using System;
-using GigHub.Core;
+﻿using GigHub.Core;
+using System;
 
 namespace GigHub.Web.Dtos
 {
     public class NotificationDto
     {
-        
+
+        public int Id { get; set; }
 
         public DateTime DateTime { get;  set; }
         public NotificationType Type { get; set; }

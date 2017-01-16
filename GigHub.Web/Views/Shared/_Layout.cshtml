@@ -75,7 +75,7 @@
 
         $(document).ready(function () {
             //  debugger;
-            $.getJSON("/api/notifications",
+            $.getJSON("/api/notifications/getNewNotifications",
                 function (notifications) {
                     if (notifications.length === 0) return;
                     $(".js-notifications-count")
@@ -86,15 +86,25 @@
                     $(".notifications").popover({
                         html: true,
                         title: "Notifications",
-                        content: function () {
+                        content: function() {
                             //This field-function must return a string
                             var compiled = _.template($("#notifications-template").html());
-                            return compiled({ notifications: notifications});
+                            return compiled({ notifications: notifications });
                         },
                         placement: "bottom",
-                        template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+                        template:
+                            '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
 
-                    });
+                    }).on('shown.bs.popover',
+                        function () {
+                            $(".js-notifications-count").removeClass("bounceInDown")
+                                .addClass("lightSpeedOut");
+
+                            $.post("/api/notifications/markAsRead").fail(function() {
+                                alert("Somthing fail, notifications is not set as read.");
+                            });
+
+                        });
 
                 });
 
