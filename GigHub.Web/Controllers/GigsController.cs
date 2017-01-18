@@ -147,6 +147,88 @@ namespace GigHub.Web.Controllers
             return RedirectToAction("Mine", "Gigs");
         }
 
+        public ActionResult Details(int id)
+        {
+            var gig = _context.Gigs
+                .Include(g =>g.Artist).Include(g=>g.Genre).SingleOrDefault(g=>g.Id == id);
 
+            if (gig == null)
+            {
+                return HttpNotFound();
+            }
+            var viewModel = new GigDetailsViewModel {Gig = gig};
+
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+
+                viewModel.IsAttending = _context.Attendances
+                    .Any(a => a.GigId == gig.Id && a.AttendeeId == userId);
+
+                viewModel.IsFollowing = _context.Followings
+                    .Any(f => f.FolloweeId == gig.ArtistId && f.FollowerId == userId);
+            }
+
+
+            return View( "Details",viewModel);
+        }
+
+
+        public ActionResult GigDetais(int id)
+        {
+
+            Gig gig;
+            GigDetailsViewModel__ viewModel;
+
+
+            if (User.Identity.IsAuthenticated)
+            {
+
+                var useId = User.Identity.GetUserId();
+                gig = _context.Gigs
+                    .Include(g => g.Artist)
+                    .Include(g=>g.Artist.Followers)
+                    .Include(g => g.Attendances)
+                    .Include(g => g.Genre)
+                    .Single(g => g.Id == id);
+                var going = gig.Attendances.Select(a => a.AttendeeId == useId).Any();
+                var follow = gig.Artist.Followers.Select(f => f.FolloweeId == useId).Any();
+                viewModel = new GigDetailsViewModel__
+                {
+                    Id = gig.Id,
+                    DateTime = gig.DateTime,
+                    ArtistName = gig.Artist.Name,
+                    ArtistId = gig.ArtistId,
+                    Venue = gig.Venue,
+                    Authorized = true,
+                    Going = going,
+                    Follow = follow
+                };
+
+            }
+            else
+            {
+                 gig = _context.Gigs
+                    .Include(g => g.Artist)
+                    .Include(g => g.Genre)
+                    .Single(g => g.Id == id);
+
+                viewModel = new GigDetailsViewModel__
+                {
+                    Id = gig.Id,
+                    DateTime = gig.DateTime,
+                    ArtistName = gig.Artist.Name,
+                    ArtistId = gig.ArtistId,
+                    Venue = gig.Venue,
+                    Authorized = false,
+                    Going = false,
+                    Follow = false
+                };
+
+            }
+
+            return View(viewModel);
+        }
     }
 }

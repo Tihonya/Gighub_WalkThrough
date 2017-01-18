@@ -1,0 +1,85 @@
+﻿@model GigHub.Web.ViewModels.GigDetailsViewModel__
+@{
+    ViewBag.Title = "Detais";
+}
+
+<span class="form-horizontal">
+    <h3>
+        @Model.ArtistName &nbsp;&nbsp;&nbsp;
+        @if (Model.Authorized)
+        {
+            if (Model.Follow)
+            {
+
+                <button class="btn btn-info js-toggle-follow" data-artistId="@Model.ArtistId" data-follow="@Model.Follow">Following</button>
+            }
+            else
+            {
+                <button class="btn btn-default js-toggle-follow" data-artistId="@Model.ArtistId" data-follow="@Model.Follow">Follow  ?</button>
+
+            }
+
+        }
+    </h3>
+</span>
+
+<div class="gig-info">
+    Performing at @Model.Venue
+    on @Model.DateTime.ToString("d MMM")
+    at @Model.DateTime.ToString("HH:mm")
+</div>
+
+<div>
+    @if (Model.Authorized)
+    {
+        if (Model.Going)
+        {
+
+            <span class="js-toggle-going">You are going to this event.</span>
+        }
+        else
+        {
+            <span class="js-toggle-going">You are Not going to this event.</span>
+
+        }
+
+    }
+</div>
+@section scripts
+{
+<script>
+    $(document).ready(function () {
+        
+        $(".js-toggle-follow").click(function(e) {
+            var button = $(e.target);
+            debugger;
+            
+    //        if (stringToBoolOrDefault(button.attr("data-follow").toLowerCase())) {
+            if ((button.attr("data-follow").toLowerCase())==="true") {
+                $.post("/api/followings/follow/un", {
+                    followeeId: button.attr("data-artistId")
+                }).done(function () {
+                    button.text("Follow  ?");
+                })
+                .fail(function () {
+                    alert("Something failed");
+                });
+
+            } else {
+                $.post("/api/followings/follow", {
+                    followeeId: button.attr("data-artistId")
+                }).done(function () {
+                    button.text("Following");
+                })
+                .fail(function () {
+                    alert("Something failed");
+                });
+            }
+        });
+
+    });
+
+
+</script>
+
+}

@@ -18,11 +18,15 @@ namespace GigHub.Web.Controllers.Api
         }
 
         [HttpPost]
+        [Route("api/followings/follow")]
         public IHttpActionResult Follow(FollowingDto dto)
         {
             var userId = User.Identity.GetUserId();
 
-            if (_context.Followings.Any(f=>f.FolloweeId == userId && f.FolloweeId == dto.FolloweeId))
+            var followings = _context.Followings.ToList();
+         //   || userId == dto.FolloweeId
+
+            if (followings.Any(f=>f.FolloweeId == dto.FolloweeId && f.FollowerId == userId) )
             {
                 return BadRequest("Following already exists.");
             }
@@ -39,5 +43,30 @@ namespace GigHub.Web.Controllers.Api
 
             return Ok();
         }
+        [Route("api/followings/follow/un")]
+        [HttpPost]
+        public IHttpActionResult UnFollow(FollowingDto dto)
+        {
+            var userId = User.Identity.GetUserId();
+            var followings = _context.Followings;
+
+
+            if (!followings.Any(f => f.FolloweeId == dto.FolloweeId && f.FollowerId == userId))
+            {
+                return BadRequest("Follower is apsent");
+            }
+
+
+            var follower = followings.Single(f => f.FolloweeId == dto.FolloweeId && f.FollowerId == userId);
+            //   || userId == dto.FolloweeId
+
+
+            _context.Followings.Remove(follower);
+            _context.SaveChanges();
+
+
+            return Ok();
+        }
+
     }
 }

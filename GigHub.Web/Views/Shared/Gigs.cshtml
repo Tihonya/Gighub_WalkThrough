@@ -4,7 +4,7 @@
 }
 
 <h2>@Model.Heading </h2>
-@using (Html.BeginForm("Search", "Gigs"))
+\\\@using (Html.BeginForm("Search", "Gigs"))
         {
     @Html.AntiForgeryToken()
 
@@ -35,7 +35,7 @@
             </div>
             <div class="details">
                 <span class="artist">
-                    @gig.Artist.Name
+                     @Html.ActionLink( gig.Artist.Name,"Details","Gigs",new {id = gig.Id},new {@class="btn btn-link"}) 
 
                     @if (gig.IsCanceled)
                     {
@@ -65,11 +65,6 @@
 
     <script>
         
-
-
-
-
-
         $(document).ready(function () {
    //        $("#searchGigs");
             
