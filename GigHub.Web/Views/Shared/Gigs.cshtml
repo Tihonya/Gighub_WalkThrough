@@ -4,7 +4,7 @@
 }
 
 <h2>@Model.Heading </h2>
-\\\@using (Html.BeginForm("Search", "Gigs"))
+@using (Html.BeginForm("Search", "Gigs"))
         {
     @Html.AntiForgeryToken()
 
@@ -72,44 +72,9 @@
     <script>
 
         $(document).ready(function() {
-            //        $("#searchGigs");
+            gigsController.init();
 
-            $(".js-toggle-attendance").click(function(e) {
-                var button = $(e.target);
-                if (button.hasClass("btn-default")) {
-                    $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
-                        .done(function() {
-                            button
-                                .removeClass("btn-default")
-                                .addClass("btn-info")
-                                .text("Going");
-                        })
-                        .fail(function() {
-                            alert("Something failed");
-                        });
-                } else {
-                    $.ajax({
-        //The first one is for default value ONLY  "int id" - ! "int gigId" do not work!  I used my var with an object.
-      //                      url: "/api/attendances/"  + button.attr("data-gig-id"),
-                            url: "/api/attendances"  ,
-                            method: "DELETE",
-                            data: { gigId: button.attr("data-gig-id") }
-                            
-
-                        }) 
-                       .done(function() {
-                            button
-                                .removeClass("btn-info")
-                                .addClass("btn-default")
-                                .text("Going?");
-
-                        })
-                        .fail(function() {
-                            alert("fail attempt to delete going");
-                        });
-                }
-            });
-
+                    
             $(".js-toggle-follow").click(function(e) {
                 var button = $(e.target);
                 $.post("/api/followings",
