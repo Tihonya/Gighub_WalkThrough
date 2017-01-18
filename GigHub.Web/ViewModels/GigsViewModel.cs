@@ -1,6 +1,7 @@
 ﻿using GigHub.Core;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace GigHub.Web.ViewModels
 {
@@ -11,5 +12,7 @@ namespace GigHub.Web.ViewModels
         public string Heading { get; set; }
         [MaxLength(100,ErrorMessage = "Search query must be shoter then 100 carecters.")]
         public string SearchTerm { get; set; }
+
+        public ILookup<int, Attendance> Attendances { get; set; }
     }
 }
