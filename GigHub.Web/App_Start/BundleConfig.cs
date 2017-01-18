@@ -8,7 +8,9 @@ namespace GigHub.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/boudles/app").Include(
-                         "~/Scripts/app/app.js"
+                         "~/Scripts/app/app.js",
+                         "~/Scripts/app/controllers/gigsController.js",
+                         "~/Scripts/app/services/attendanceService.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
