@@ -5,20 +5,25 @@
 
 <h2>@Model.Heading </h2>
 @using (Html.BeginForm("Search", "Gigs"))
-        {
+{
     @Html.AntiForgeryToken()
 
-            <div class="form-group">
-                <div id="searchGigs" class="input-group">
-                    @Html.TextBoxFor(m => m.SearchTerm, new {@class = "form-control", autofocus = "autofocus" , placeholder="Search by artist, genre..."})
-                    @Html.ValidationMessageFor(m => m.SearchTerm)
-                    <span class="input-group-addon ">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </span>
+    <div class="form-group">
+        <div id="searchGigs" class="input-group">
+            @Html.TextBoxFor(m => m.SearchTerm, new
+               {
+                   @class = "form-control",
+                   autofocus = "autofocus",
+                   placeholder = "Search by artist, genre..."
+               })
+            @Html.ValidationMessageFor(m => m.SearchTerm)
+            <span class="input-group-addon ">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
 
-                </div>
-            </div>
-           
+        </div>
+    </div>
+
 }
 
 <ul id="gigs" class="gigs voffset4">
@@ -35,27 +40,22 @@
             </div>
             <div class="details">
                 <span class="artist">
-                     @Html.ActionLink( gig.Artist.Name,"Details","Gigs",new {id = gig.Id},new {@class="btn btn-link"}) 
+                    @Html.ActionLink(gig.Artist.Name, "Details", "Gigs", new { id = gig.Id }, new { @class = "btn btn-link" })
 
                     @if (gig.IsCanceled)
                     {
                         <span class="label label-warning">Canceled</span>
                     }
 
-                    @if (Model.ShowActions)
-                    {
-                        <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@gig.ArtistId">Follow ?</button>
-                    }
                 </span>
                 <span class="genre">
                     @gig.Genre.Name
                 </span>
                 @if (Model.ShowActions && !gig.IsCanceled)
                 {
-                    <button
-                        data-gig-id="@gig.Id"
-                        class="btn  
-                            @(Model.Attendances.Contains(gig.Id) ? "btn-info" : "btn-default") 
+                    <button data-gig-id="@gig.Id"
+                            class="btn
+                            @(Model.Attendances.Contains(gig.Id) ? "btn-info" : "btn-default")
                             btn-sm pull-right js-toggle-attendance">
                         Going ?
                     </button>
@@ -63,30 +63,17 @@
             </div>
 
         </li>
-        }
+    }
 </ul>
 
 
 @section scripts {
     <script>
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             gigsController.init("#gigs");
 
-                    
-            $(".js-toggle-follow").click(function(e) {
-                var button = $(e.target);
-                $.post("/api/followings",
-                    {
-                        followeeId: button.attr("data-user-id")
-                    })
-                    .done(function() {
-                        button.text("Following");
-                    })
-                    .fail(function() {
-                        alert("Something failed");
-                    });
-            });
+
 
         });
     </script>

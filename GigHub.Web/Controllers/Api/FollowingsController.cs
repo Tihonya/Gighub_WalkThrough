@@ -18,13 +18,10 @@ namespace GigHub.Web.Controllers.Api
         }
 
         [HttpPost]
-        [Route("api/followings/follow")]
         public IHttpActionResult Follow(FollowingDto dto)
         {
             var userId = User.Identity.GetUserId();
-
             var followings = _context.Followings.ToList();
-         //   || userId == dto.FolloweeId
 
             if (followings.Any(f=>f.FolloweeId == dto.FolloweeId && f.FollowerId == userId) )
             {
@@ -40,30 +37,24 @@ namespace GigHub.Web.Controllers.Api
             _context.Followings.Add(following);
             _context.SaveChanges();
             
-
             return Ok();
         }
-        [Route("api/followings/follow/un")]
-        [HttpPost]
+
+        [HttpDelete]
         public IHttpActionResult UnFollow(FollowingDto dto)
         {
             var userId = User.Identity.GetUserId();
             var followings = _context.Followings;
 
+            var follower = followings.SingleOrDefault(f => f.FolloweeId == dto.FolloweeId && f.FollowerId == userId);
 
-            if (!followings.Any(f => f.FolloweeId == dto.FolloweeId && f.FollowerId == userId))
+            if (follower ==null)
             {
-                return BadRequest("Follower is apsent");
+                return NotFound();
             }
-
-
-            var follower = followings.Single(f => f.FolloweeId == dto.FolloweeId && f.FollowerId == userId);
-            //   || userId == dto.FolloweeId
-
-
+           
             _context.Followings.Remove(follower);
             _context.SaveChanges();
-
 
             return Ok();
         }
