@@ -1,4 +1,5 @@
 ﻿using GigHub.DataLayer;
+using GigHub.Web.Repositories;
 using GigHub.Web.ViewModels;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
@@ -11,12 +12,14 @@ namespace GigHub.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly AttendanceRepository _attendanceRepository;
 
 
         public HomeController()
         {
             _context = new ApplicationDbContext();
+            _attendanceRepository = new AttendanceRepository(_context);
         }
 
         public ActionResult Index(string query = null )
@@ -26,9 +29,9 @@ namespace GigHub.Web.Controllers
                 .Include(g=>g.Genre)
                 .Where(g => g.DateTime > DateTime.Now && !g.IsCanceled)
                 .ToList();
+
             if ( !query.IsNullOrWhiteSpace())
             {
-
                 var lquery = query.ToLower();
 
                 upcomingGigs = upcomingGigs
@@ -40,9 +43,7 @@ namespace GigHub.Web.Controllers
             }
 
             string userId = User.Identity.GetUserId();
-            var attendances = _context.Attendances
-                .Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
-                .ToList()
+            var attendances = _attendanceRepository.GetFutureAttendances(userId)
                 .ToLookup(a=>a.GigId);
 
 

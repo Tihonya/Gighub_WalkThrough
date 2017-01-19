@@ -232,6 +232,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AttendanceRepository.cs" />
+    <Compile Include="Repositories\FollowingRepository.cs" />
+    <Compile Include="Repositories\GenreRepository.cs" />
+    <Compile Include="Repositories\GigRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
@@ -355,7 +359,6 @@
     <Content Include="Views\Gigs\GigForm.cshtml" />
     <Content Include="Views\Followees\FollowingArtists.cshtml" />
     <Content Include="Views\Gigs\Mine.cshtml" />
-    <Content Include="Views\Gigs\GigDetais.cshtml" />
     <Content Include="Views\Gigs\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
