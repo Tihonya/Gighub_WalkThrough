@@ -35,41 +35,7 @@
 {
     <script>
         $(document).ready(function() {
-            $(".js-toggle-follow").click(function (e) {
-                var button = $(e.target);
-                if (button.hasClass("btn-default")) {
-                    $.post("/api/followings",
-                        {
-                            followeeId: button.attr("data-user-id")
-                        })
-                        .done(function () {
-                            button
-                                .text("Following")
-                                .removeClass("btn-default")
-                                .addClass("btn-info");
-                        })
-                        .fail(function () {
-                            alert("Something failed");
-                        });
-
-                } else {
-                    $.ajax({
-                        url: "/api/followings",
-                        method: "DELETE",
-                        data: { followeeId: button.attr("data-user-id") }
-                    })
-                        .done(function () {
-                            button
-                                .removeClass("btn-info")
-                                .addClass("btn-default")
-                                .text("Follow  ?");
-                        })
-                        .fail(function () {
-                            alert("Something failed");
-                        });
-                }
-            });
-
+            followingsController.init();
         });
 
 
