@@ -1,6 +1,6 @@
-﻿using System;
-using GigHub.Core;
+﻿using GigHub.Core;
 using GigHub.DataLayer;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -50,6 +50,9 @@ namespace GigHub.Web.Repositories
         }
 
 
-
+        public void Add(Gig gig)
+        {
+            _context.Gigs.Add(gig);
+        }
     }
 }
