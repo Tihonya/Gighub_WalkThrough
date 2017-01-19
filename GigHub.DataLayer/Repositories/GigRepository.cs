@@ -1,11 +1,11 @@
-﻿using GigHub.Core;
-using GigHub.DataLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using GigHub.Core;
+using GigHub.Core.Repositories;
 
-namespace GigHub.Web.Repositories
+namespace GigHub.DataLayer.Repositories
 {
     public class GigRepository : IGigRepository
     {
@@ -19,7 +19,7 @@ namespace GigHub.Web.Repositories
         public Gig GetGigWithAttendance(int gigId)
         {
             return _context.Gigs
-                .Include(g => g.Attendances.Select(a => a.Attendee))
+                .Include(g => Enumerable.Select<Attendance, ApplicationUser>(g.Attendances, a => a.Attendee))
                 .SingleOrDefault(g => g.Id == gigId);
         }
 

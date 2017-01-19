@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using GigHub.Core;
 using GigHub.DataLayer;
-using GigHub.Web.Dtos;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
+using GigHub.Core.Dtos;
 
 namespace GigHub.Web.Controllers.Api
 {

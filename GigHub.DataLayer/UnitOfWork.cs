@@ -1,7 +1,8 @@
-﻿using GigHub.DataLayer;
-using GigHub.Web.Repositories;
+﻿using GigHub.Core;
+using GigHub.Core.Repositories;
+using GigHub.DataLayer.Repositories;
 
-namespace GigHub.Web.Persistence
+namespace GigHub.DataLayer
 {
     public class UnitOfWork : IUnitOfWork
     {

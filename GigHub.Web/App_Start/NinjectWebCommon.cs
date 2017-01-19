@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(GigHub.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(GigHub.Web.App_Start.NinjectWebCommon), "Stop")]
 
@@ -45,9 +47,14 @@ namespace GigHub.Web.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+
+                var assemblies = new List<string>();
+                 assemblies.Add("GigHub.DataLayer");
+
                 kernel.Bind(x=>
                 {
-                    x.FromThisAssembly()
+
+                    x.From(assemblies)
                         .SelectAllClasses()
                         .BindDefaultInterface();
                 });

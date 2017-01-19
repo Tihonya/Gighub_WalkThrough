@@ -1,6 +1,4 @@
-using GigHub.Core;
-
-namespace GigHub.Web.Repositories
+namespace GigHub.Core.Repositories
 {
     public interface IFollowingRepository
     {

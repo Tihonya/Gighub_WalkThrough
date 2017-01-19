@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GigHub.Core;
+using GigHub.Core.Dtos;
 using GigHub.Web.Controllers.Api;
-using GigHub.Web.Dtos;
 
 namespace GigHub.Web
 {

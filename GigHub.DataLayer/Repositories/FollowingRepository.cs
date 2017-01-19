@@ -1,8 +1,8 @@
-﻿using GigHub.Core;
-using GigHub.DataLayer;
-using System.Linq;
+﻿using System.Linq;
+using GigHub.Core;
+using GigHub.Core.Repositories;
 
-namespace GigHub.Web.Repositories
+namespace GigHub.DataLayer.Repositories
 {
     public class FollowingRepository : IFollowingRepository
     {

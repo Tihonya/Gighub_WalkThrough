@@ -1,9 +1,9 @@
-﻿using GigHub.Core;
-using GigHub.DataLayer;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using GigHub.Core;
+using GigHub.Core.Repositories;
 
-namespace GigHub.Web.Repositories
+namespace GigHub.DataLayer.Repositories
 {
     public class GenreRepository : IGenreRepository
     {

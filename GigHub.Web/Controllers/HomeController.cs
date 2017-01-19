@@ -1,5 +1,4 @@
 ﻿using GigHub.DataLayer;
-using GigHub.Web.Repositories;
 using GigHub.Web.ViewModels;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
@@ -7,6 +6,7 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using GigHub.DataLayer.Repositories;
 
 namespace GigHub.Web.Controllers
 {
