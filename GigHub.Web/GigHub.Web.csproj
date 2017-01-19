@@ -282,7 +282,7 @@
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\controllers\followingsController.js" />
+    <Content Include="Scripts\app\controllers\gigDetailsController.js" />
     <Content Include="Scripts\app\controllers\gigsController.js" />
     <Content Include="Scripts\app\services\attendanceService.js" />
     <Content Include="Scripts\app\services\followingService.js" />

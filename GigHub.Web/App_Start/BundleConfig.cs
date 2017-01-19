@@ -12,7 +12,7 @@ namespace GigHub.Web
                          "~/Scripts/app/controllers/gigsController.js",
                          "~/Scripts/app/services/attendanceService.js",
                          "~/Scripts/app/services/followingService.js",
-                         "~/Scripts/app/controllers/followingsController.js"
+                         "~/Scripts/app/controllers/gigDetailsController.js"
 
                 ));
 

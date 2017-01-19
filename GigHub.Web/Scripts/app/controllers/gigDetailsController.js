@@ -1,4 +1,4 @@
-﻿var followingsController = (function () {
+﻿var gigDetailsController = (function () {
     var button;
     var init = function () {
         $(".js-toggle-follow").click(toggleFollow);
