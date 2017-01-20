@@ -1,7 +1,5 @@
-﻿using GigHub.DataLayer;
+﻿using GigHub.Core;
 using Microsoft.AspNet.Identity;
-using System.Data.Entity;
-using System.Linq;
 using System.Web.Http;
 
 namespace GigHub.Web.Controllers.Api
@@ -9,11 +7,11 @@ namespace GigHub.Web.Controllers.Api
     [Authorize]
     public class GigsController : ApiController
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GigsController()
+        public GigsController(IUnitOfWork unitOfWork)
         {
-            _context= new ApplicationDbContext();
+            _unitOfWork = unitOfWork;
         }
 
         [HttpDelete]
@@ -21,9 +19,17 @@ namespace GigHub.Web.Controllers.Api
         {
 
             var userId = User.Identity.GetUserId();
-            var gig = _context.Gigs
-                .Include(g=>g.Attendances.Select(a=>a.Attendee))
-                .Single(g => g.Id == id && g.ArtistId == userId);
+            var gig = _unitOfWork.Gigs.GetGigWithAttendance(id);
+;
+            if (gig == null)
+            {
+                return BadRequest("Not found");
+            }
+
+            if (gig.ArtistId != userId)
+            {
+                return Unauthorized();
+            }
 
             if (gig.IsCanceled)
             {
@@ -32,7 +38,7 @@ namespace GigHub.Web.Controllers.Api
 
             gig.Cancel();
 
-            _context.SaveChanges();
+           _unitOfWork.Complete();
 
             return Ok();
         }

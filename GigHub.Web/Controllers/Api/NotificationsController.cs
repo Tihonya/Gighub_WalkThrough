@@ -1,33 +1,27 @@
 ﻿using AutoMapper;
 using GigHub.Core;
-using GigHub.DataLayer;
+using GigHub.Core.Dtos;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
-using GigHub.Core.Dtos;
 
 namespace GigHub.Web.Controllers.Api
 {
     [Authorize]
     public class NotificationsController : ApiController
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
         
-        public NotificationsController()
+        public NotificationsController(IUnitOfWork unitOfWork)
         {
-            _context=new ApplicationDbContext();
+            _unitOfWork = unitOfWork;
         }
         public IEnumerable<NotificationDto> GetNewNotifications()
         {
             var userId = User.Identity.GetUserId();
-            var notifications = _context.UserNotifications
-                .Where(un => un.UserId == userId && !un.IsRead)
-                .Select(un=>un.Notification)
-                .Include(n=>n.Gig.Artist)
-                .ToList();
+            var notifications = _unitOfWork.Notifications.GetNewNotificationsFor(userId);
 
 
            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
@@ -44,13 +38,12 @@ namespace GigHub.Web.Controllers.Api
         public IHttpActionResult MarkAsRead()
         {
             var userId = User.Identity.GetUserId();
-            var notifications = _context.UserNotifications
-                .Where(un => un.UserId == userId && !un.IsRead)
-                .ToList();
+            var notifications = _unitOfWork.UserNotifications
+                .GetUserNotificationsFor(userId);
 
             notifications.ForEach(n=> n.Read());
 
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return Ok();
         }
@@ -58,19 +51,20 @@ namespace GigHub.Web.Controllers.Api
         /// not in use
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<NotificationDto> GetMostRecentNotifications()
-        {
-            var userId = User.Identity.GetUserId();
-            var notifications = _context.UserNotifications
-                .Where(un => un.UserId == userId)
-                .Select(un => un.Notification)
-                .Where(n=>n.DateTime>= DateTime.Now - new TimeSpan(5,0,0,0))
-                .Include(n => n.Gig.Artist)
-                .ToList();
+       
+        //public IEnumerable<NotificationDto> GetMostRecentNotifications()
+        //{
+        //    var userId = User.Identity.GetUserId();
+        //    var notifications = _context.UserNotifications
+        //        .Where(un => un.UserId == userId)
+        //        .Select(un => un.Notification)
+        //        .Where(n=>n.DateTime>= DateTime.Now - new TimeSpan(5,0,0,0))
+        //        .Include(n => n.Gig.Artist)
+        //        .ToList();
 
 
-            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
-        }
+        //    return notifications.Select(Mapper.Map<Notification, NotificationDto>);
+        //}
 
 
 

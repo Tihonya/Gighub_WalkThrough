@@ -1,8 +1,8 @@
-﻿using System;
+﻿using GigHub.Core;
+using GigHub.Core.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using GigHub.Core;
-using GigHub.Core.Repositories;
 
 namespace GigHub.DataLayer.Repositories
 {
@@ -27,6 +27,16 @@ namespace GigHub.DataLayer.Repositories
                 .Where(a => a.AttendeeId == userId
                 && a.Gig.DateTime > DateTime.Now)
                 .ToList();
+        }
+
+        public void Remove(Attendance attendance)
+        {
+            _context.Attendances.Remove(attendance);
+        }
+
+        public void Add(Attendance attendance)
+        {
+            _context.Attendances.Add(attendance);
         }
     }
 }

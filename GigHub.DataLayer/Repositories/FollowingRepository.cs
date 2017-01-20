@@ -1,6 +1,6 @@
-﻿using System.Linq;
-using GigHub.Core;
+﻿using GigHub.Core;
 using GigHub.Core.Repositories;
+using System.Linq;
 
 namespace GigHub.DataLayer.Repositories
 {
@@ -19,5 +19,15 @@ namespace GigHub.DataLayer.Repositories
                     .SingleOrDefault(f => f.FolloweeId == artistId && f.FollowerId == userId);
         }
 
+
+        public void Remove(Following following)
+        {
+            _context.Followings.Remove(following);
+        }
+
+        public void Add(Following following)
+        {
+            _context.Followings.Add(following);
+        }
     }
 }

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using GigHub.Core;
+using GigHub.Core.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using GigHub.Core;
-using GigHub.Core.Repositories;
 
 namespace GigHub.DataLayer.Repositories
 {
@@ -49,7 +49,14 @@ namespace GigHub.DataLayer.Repositories
                 .ToList();
         }
 
-
+        public IEnumerable<Gig> GetUpcomingGigs()
+        {
+            return _context.Gigs
+                .Include(g => g.Artist)
+                .Include(g => g.Genre)
+                .Where(g => g.DateTime > DateTime.Now && !g.IsCanceled)
+                .ToList();
+        }
         public void Add(Gig gig)
         {
             _context.Gigs.Add(gig);
