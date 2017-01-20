@@ -29,10 +29,9 @@ namespace GigHub.DataLayer
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             modelBuilder.Configurations.Add(new NotificationConfiguration());
             modelBuilder.Configurations.Add(new UserNotificationConfiguration());
+            modelBuilder.Configurations.Add(new FollowingConfiguration());
           
-
             
-
             base.OnModelCreating(modelBuilder);
         }
 

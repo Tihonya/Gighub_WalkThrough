@@ -7,7 +7,11 @@ namespace GigHub.DataLayer
     {
         public AttendanceConfiguration()
         {
-            HasRequired(a=>a.Gig).WithMany(g=>g.Attendances).WillCascadeOnDelete(false);
+            HasKey(a => new 
+            {
+                a.GigId,
+                a.AttendeeId
+            });
         }
     }
 }

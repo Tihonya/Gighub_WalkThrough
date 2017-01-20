@@ -7,7 +7,7 @@ namespace GigHub.DataLayer
     {
         public UserNotificationConfiguration()
         {
-            HasRequired(un=>un.User).WithMany(au=>au.UserNotifications).WillCascadeOnDelete(false);
+            HasKey(un => new {un.UserId, un.NotificationId});
         }
     }
 }

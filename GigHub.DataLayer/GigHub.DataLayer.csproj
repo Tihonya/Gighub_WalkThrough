@@ -60,6 +60,7 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="ApplicationUserConfiguration.cs" />
     <Compile Include="AttendanceConfiguration.cs" />
+    <Compile Include="FollowingConfiguration.cs" />
     <Compile Include="Repositories\ApplicationUserRepository.cs" />
     <Compile Include="Repositories\AttendanceRepository.cs" />
     <Compile Include="Repositories\FollowingRepository.cs" />

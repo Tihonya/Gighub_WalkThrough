@@ -7,18 +7,23 @@ namespace GigHub.DataLayer
    {
        public GigConfiguration()
        {
-           Property(g => g.Venue).IsRequired().HasMaxLength(255);
-           Property(g => g.ArtistId).IsRequired();
-           Property(g => g.GenreId).IsRequired();
+
+           Property(g => g.ArtistId)
+                .IsRequired();
+           Property(g => g.GenreId)
+                .IsRequired();
+
+           Property(g => g.Venue)
+                .IsRequired()
+                .HasMaxLength(255);
+
+           HasMany(g=>g.Attendances)
+                .WithRequired(a=>a.Gig)
+                .WillCascadeOnDelete(false);
+
+  
 
 
-           // HasRequired(g => g.ArtistId); //WithRequiredDependent().WillCascadeOnDelete(false);
-           //      HasRequired(g => g.Genre); //.WithMany().WillCascadeOnDelete(false);
-           //    Property(g => g.DateTime).IsRequired();
-           //   Property(g => g.Artist).IsRequired();
-
-
-
-       }
+        }
     }
 }

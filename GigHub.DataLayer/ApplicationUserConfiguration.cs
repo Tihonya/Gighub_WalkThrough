@@ -16,6 +16,10 @@ namespace GigHub.DataLayer
             HasMany(u=>u.Followees)
                 .WithRequired(f=>f.Followee)
                 .WillCascadeOnDelete(false);
+
+            HasMany(u=>u.UserNotifications)
+                .WithRequired(un=>un.User)
+                .WillCascadeOnDelete(false);
         }
     }
 }
