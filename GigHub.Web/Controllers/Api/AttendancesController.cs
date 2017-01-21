@@ -51,7 +51,7 @@ namespace GigHub.Web.Controllers.Api
 
             _unitOfWork.Complete();
 
-            return Ok();
+            return Ok(dto);
         }
 
     }
